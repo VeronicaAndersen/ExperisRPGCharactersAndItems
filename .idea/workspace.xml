@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4ed172e-bb79-4e06-8f5a-29759275df06" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Characters/Mage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Characters/Ranger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Characters/Rogue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Characters/Warrior.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/Armor/Armor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/Armor/ArmorType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/Weapons/Weapon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/Weapons/WeaponType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +55,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1659364119000</updated>
-      <workItem from="1659364121218" duration="2475000" />
+      <workItem from="1659364121218" duration="6158000" />
     </task>
     <servers />
   </component>
