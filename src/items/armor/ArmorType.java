@@ -1,4 +1,9 @@
 package items.armor;
 
-public class ArmorType {
+public enum ArmorType {
+  Cloth,
+  Leather,
+  Mail,
+  Plate,
+
 }

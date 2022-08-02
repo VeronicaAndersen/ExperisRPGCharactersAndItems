@@ -1,4 +1,9 @@
 package items.weapons;
 
-public class Weapon {
+import items.Item;
+
+public class Weapon extends Item  {
+  public Weapon(String wep) {
+    super(wep);
+  }
 }

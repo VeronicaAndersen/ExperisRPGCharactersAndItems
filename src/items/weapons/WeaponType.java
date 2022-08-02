@@ -1,4 +1,11 @@
 package items.weapons;
 
-public class WeaponType {
+public enum WeaponType {
+  Axes,
+  Bows,
+  Daggers,
+  Hammers,
+  Staffs,
+  Swords,
+  Wands,
 }
