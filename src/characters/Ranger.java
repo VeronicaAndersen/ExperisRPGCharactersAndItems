@@ -7,5 +7,8 @@ public class Ranger extends Character{
   public void levelUp() {
     levelUp(1,5,1);
   }
-
+  @Override
+  public float calculateDPS(float weaponDPS) {
+    return weaponDPS * (1 + totalAttributes.getDexterity()/100);
+  }
 }

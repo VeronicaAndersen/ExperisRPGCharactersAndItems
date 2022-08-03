@@ -3,7 +3,12 @@ package items.weapons;
 import items.Item;
 
 public class Weapon extends Item  {
-  public Weapon(String wep) {
-    super(wep);
+  private float dps;
+  public Weapon(String weaponName, float dps) {
+    super(weaponName);
+    this.dps = dps;
+  }
+  public float getDPS() {
+    return dps;
   }
 }

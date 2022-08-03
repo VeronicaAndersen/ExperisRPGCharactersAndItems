@@ -2,15 +2,13 @@ package items;
 
 public class Item {
 
-  String name;
-  int levelEquip;
-  String slot;
-
+  private String name;
+  private int requiredLevel;
+  private String slot;
   public String getName() {
     return name;
   }
-
-  public Item(String weapon) {
-    this.name = weapon;
+  public Item(String itemName) {
+    this.name = itemName;
   }
 }
