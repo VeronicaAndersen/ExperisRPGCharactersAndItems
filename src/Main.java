@@ -18,12 +18,11 @@ public class Main {
     character.levelUp();
     character.Equipments(EquipmentSlots.Head, armor);
     character.Equipments(EquipmentSlots.Weapon, weapon);
-    System.out.println("Name: " + character.getName());
     System.out.println("Armor: " + character.getSlots().get(EquipmentSlots.Head).getName());
     System.out.println("Weapon: " + character.getSlots().get(EquipmentSlots.Weapon).getName());
-    System.out.println(character.Display());
+
+    System.out.println(character.display());
     character.calculateTotal();
-    System.out.println(character.Display());
     System.out.println(character.getCharacterDPS());
     System.out.println("Armors: " + Arrays.toString(character.getArmorList()));
     System.out.println("Weapons: " + Arrays.toString(character.getWeaponsList()));

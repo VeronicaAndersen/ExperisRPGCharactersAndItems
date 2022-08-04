@@ -21,7 +21,6 @@ public class Mage extends Character {
 
   @Override
   public float calculateDPS(float weaponDPS) {
-    System.out.println(totalAttributes.getIntelligence());
     return weaponDPS * (1 + ((float) totalAttributes.getIntelligence() / 100));
 
   }

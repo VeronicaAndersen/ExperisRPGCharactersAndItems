@@ -53,7 +53,6 @@ public abstract class Character {
       if (item instanceof Armor)
         baseAttributes.addAttribute(((Armor) item).primaryAttribute);
     });
-    System.out.println(totalAttributes.getStrength());
   }
 
   HashMap<EquipmentSlots, Item> slots = new HashMap<EquipmentSlots, Item>();
@@ -66,11 +65,16 @@ public abstract class Character {
   public HashMap<EquipmentSlots, Item> getSlots() {
     return slots;
   }
-
-  public String Display() {
-    String display = name + " " + level + " " + baseAttributes.getStrength() + " " + baseAttributes.getDexterity() + " " + baseAttributes.getIntelligence();
-    return display;
+  StringBuilder displayAll = new StringBuilder();
+  public String display() {
+    displayAll.append("CharacterName: " + name + " ");
+    displayAll.append("CharacterLevel: " + level + " ");
+    displayAll.append("Strength: " + baseAttributes.getStrength() + " ");
+    displayAll.append("Dexterity: " + baseAttributes.getDexterity() + " ");
+    displayAll.append("Intelligence: " + baseAttributes.getIntelligence() + " ");
+    return displayAll.toString();
   }
+
 
   public float getWeaponDPS() {
     Weapon weapon = (Weapon) slots.get(EquipmentSlots.Weapon);
