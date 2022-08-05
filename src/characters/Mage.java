@@ -3,6 +3,8 @@ package characters;
 import items.Item;
 import items.armor.Armor;
 import items.armor.ArmorType;
+import items.armor.InvalidArmorException;
+import items.weapons.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
 
@@ -22,6 +24,16 @@ public class Mage extends Character {
   @Override
   public float calculateDPS(float weaponDPS) {
     return weaponDPS * (1 + ((float) totalAttributes.getIntelligence() / 100));
-
   }
+
+  /*public void Equipments(Weapon weapon)  {
+    if(level >= weapon.getRequiredLevel()){
+
+    }
+  }
+  public void Equipments(Armor armor) {
+    if(level >= armor.getRequiredLevel()){
+
+    }
+  }*/
 }

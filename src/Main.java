@@ -13,12 +13,12 @@ public class Main {
   public static void main(String[] args) {
     Mage character = new Mage("Nemo");
     Item armor = new Armor("Ice cream", new PrimaryAttribute(0, 6, 0));
-    Item weapon = new Weapon("Weapon hehe", 100);
-
+    Item weapon = new Weapon("Weapon hehe", 100, 1);
+    weapon.setSlot(EquipmentSlots.Head);
     character.levelUp();
-    character.Equipments(EquipmentSlots.Head, armor);
-    character.Equipments(EquipmentSlots.Weapon, weapon);
-    System.out.println("Armor: " + character.getSlots().get(EquipmentSlots.Head).getName());
+    //character.Equipments(EquipmentSlots.Head, armor);
+    character.Equipments(EquipmentSlots.Weapon, weapon, character.getWeaponsList());
+    //System.out.println("Armor: " + character.getSlots().get(EquipmentSlots.Head).getName());
     System.out.println("Weapon: " + character.getSlots().get(EquipmentSlots.Weapon).getName());
 
     System.out.println(character.display());

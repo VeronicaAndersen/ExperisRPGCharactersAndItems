@@ -3,21 +3,20 @@ package characters;
 import items.Item;
 import items.armor.Armor;
 import items.armor.ArmorType;
+import items.weapons.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
+
 import java.util.HashMap;
 
 public abstract class Character {
   private String name;
   private int level = 1;
-
   private ArmorType[] armorList = {};
   private WeaponType[] weaponsList = {};
-
   public String getName() {
     return name;
   }
-
   public ArmorType[] getArmorList() {
     return armorList;
   }
@@ -34,8 +33,8 @@ public abstract class Character {
     this.weaponsList = weaponsList;
   }
 
-  PrimaryAttribute baseAttributes = new PrimaryAttribute();     //Attributes of the character
-  PrimaryAttribute totalAttributes = new PrimaryAttribute();     //Attributes of the character
+  PrimaryAttribute baseAttributes = new PrimaryAttribute();     //Base primary attributes of the character
+  PrimaryAttribute totalAttributes = new PrimaryAttribute();     //Total primary attributes of the character
 
   public Character(String name, int strength, int dexterity, int intelligence) {
     this.name = name;
@@ -57,15 +56,36 @@ public abstract class Character {
 
   HashMap<EquipmentSlots, Item> slots = new HashMap<EquipmentSlots, Item>();
 
-  public void Equipments(EquipmentSlots slot, Item item) {
+  public <T> void Equipments(EquipmentSlots slot, Item item, T[] types) {
+    if (item.getClass().equals(Weapon.class)) {
+      Weapon weapon = (Weapon) item;
+      for (T type : types) {
+        try {
+          if (level >= item.getRequiredLevel() && item.getSlot() == EquipmentSlots.Weapon) {
+            slots.put(slot, item);
+            System.out.println("Weapon Equipt");
+            return;
+          } else {
+            throw new InvalidWeaponException("This is not ok");
+          }
+        } catch (InvalidWeaponException ex) {
+          break;
+        }
+      }
+
+    }
+
     slots.put(slot, item);
     slots.get(slot);
+    return;
   }
 
   public HashMap<EquipmentSlots, Item> getSlots() {
     return slots;
   }
+
   StringBuilder displayAll = new StringBuilder();
+
   public String display() {
     displayAll.append("CharacterName: " + name + " ");
     displayAll.append("CharacterLevel: " + level + " ");
