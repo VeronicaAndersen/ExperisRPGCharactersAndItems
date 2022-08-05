@@ -1,14 +1,21 @@
 package characters;
 
-import items.Item;
-import items.armor.Armor;
 import items.armor.ArmorType;
-import items.armor.InvalidArmorException;
-import items.weapons.InvalidWeaponException;
-import items.weapons.Weapon;
 import items.weapons.WeaponType;
 
 public class Mage extends Character {
+
+
+  @Override
+  public ArmorType[] getArmorList() {
+    return armorList;
+  }
+
+  @Override
+  public void setArmorList(ArmorType[] armorList) {
+    this.armorList = armorList;
+  }
+
   private WeaponType[] weaponList = {WeaponType.Staffs, WeaponType.Wands};
   private ArmorType[] armorList = {ArmorType.Cloth};
   public Mage(String name) {
@@ -21,19 +28,12 @@ public class Mage extends Character {
     levelUp(1, 1, 5);
   }
 
+
+
   @Override
   public float calculateDPS(float weaponDPS) {
     return weaponDPS * (1 + ((float) totalAttributes.getIntelligence() / 100));
   }
 
-  /*public void Equipments(Weapon weapon)  {
-    if(level >= weapon.getRequiredLevel()){
 
-    }
-  }
-  public void Equipments(Armor armor) {
-    if(level >= armor.getRequiredLevel()){
-
-    }
-  }*/
 }

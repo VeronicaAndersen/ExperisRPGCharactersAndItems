@@ -3,10 +3,12 @@ package characters;
 import items.Item;
 import items.armor.Armor;
 import items.armor.ArmorType;
+import items.armor.InvalidArmorException;
 import items.weapons.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public abstract class Character {
@@ -14,9 +16,14 @@ public abstract class Character {
   private int level = 1;
   private ArmorType[] armorList = {};
   private WeaponType[] weaponsList = {};
+
+  private String weaponType;
+  private String armorType;
+
   public String getName() {
     return name;
   }
+
   public ArmorType[] getArmorList() {
     return armorList;
   }
@@ -34,7 +41,16 @@ public abstract class Character {
   }
 
   PrimaryAttribute baseAttributes = new PrimaryAttribute();     //Base primary attributes of the character
+  PrimaryAttribute itemAttributes = new PrimaryAttribute();     //Item primary attributes of the character
   PrimaryAttribute totalAttributes = new PrimaryAttribute();     //Total primary attributes of the character
+
+  public void collectTotalAttributes() {
+    itemAttributes.setToAttributes(0, 0, 0);
+
+    slots.forEach((slot, item) -> itemAttributes.addToAttributes(item.getAttributes().getStrength(), item.getAttributes().getDexterity(), item.getAttributes().getIntelligence()));
+    totalAttributes.mergeAttributes(itemAttributes, baseAttributes);
+    System.out.println(totalAttributes.getStrength());
+  }
 
   public Character(String name, int strength, int dexterity, int intelligence) {
     this.name = name;
@@ -54,36 +70,49 @@ public abstract class Character {
     });
   }
 
-  HashMap<EquipmentSlots, Item> slots = new HashMap<EquipmentSlots, Item>();
+  HashMap<EquipmentSlots, Item> slots = new HashMap<>();
 
+  /*Check if the character is allowed to equip by the requiredLevel and weapon types and same for armor..*/
   public <T> void Equipments(EquipmentSlots slot, Item item, T[] types) {
     if (item.getClass().equals(Weapon.class)) {
-      Weapon weapon = (Weapon) item;
-      for (T type : types) {
+      for (int i = 0; i < getWeaponsList().length; i++) {
         try {
-          if (level >= item.getRequiredLevel() && item.getSlot() == EquipmentSlots.Weapon) {
+          if (getWeaponsList()[i].equals(item.getWeaponType()) && level >= item.getRequiredLevel()) {
             slots.put(slot, item);
-            System.out.println("Weapon Equipt");
-            return;
+            collectTotalAttributes();
+            System.out.println("Ok weapon");
+            break;
           } else {
-            throw new InvalidWeaponException("This is not ok");
+            throw new InvalidWeaponException("This weapon is not ok.");
           }
-        } catch (InvalidWeaponException ex) {
+        } catch (InvalidWeaponException invalidWeaponException) {
           break;
         }
       }
-
     }
-
-    slots.put(slot, item);
-    slots.get(slot);
-    return;
+    if (item.getClass().equals(Armor.class)) {
+      for (int i = 0; i < getArmorList().length; i++) {
+        try {
+          if (getArmorList()[i].equals(item.getArmorType()) && level >= item.getRequiredLevel()) {
+            slots.put(slot, item);
+            collectTotalAttributes();
+            System.out.println("Ok armor");
+            break;
+          } else {
+            throw new InvalidArmorException("This armor is not ok.");
+          }
+        } catch (InvalidArmorException invalidWeaponException) {
+          break;
+        }
+      }
+    }
   }
 
   public HashMap<EquipmentSlots, Item> getSlots() {
     return slots;
   }
 
+  /*Creating a stringBuilder for the required stats.*/
   StringBuilder displayAll = new StringBuilder();
 
   public String display() {
@@ -95,13 +124,14 @@ public abstract class Character {
     return displayAll.toString();
   }
 
-
+  /*Check if weapon is null than it will return 0 otherwise it will return the DPS for the weapon.*/
   public float getWeaponDPS() {
     Weapon weapon = (Weapon) slots.get(EquipmentSlots.Weapon);
     if (weapon == null) return 0;
     return weapon.getDPS();
   }
 
+  /**/
   protected abstract float calculateDPS(float weaponDPS);
 
   public float getCharacterDPS() {
