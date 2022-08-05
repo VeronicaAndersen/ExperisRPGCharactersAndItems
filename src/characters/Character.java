@@ -8,7 +8,6 @@ import items.weapons.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public abstract class Character {
@@ -16,9 +15,6 @@ public abstract class Character {
   private int level = 1;
   private ArmorType[] armorList = {};
   private WeaponType[] weaponsList = {};
-
-  private String weaponType;
-  private String armorType;
 
   public String getName() {
     return name;
@@ -46,10 +42,8 @@ public abstract class Character {
 
   public void collectTotalAttributes() {
     itemAttributes.setToAttributes(0, 0, 0);
-
     slots.forEach((slot, item) -> itemAttributes.addToAttributes(item.getAttributes().getStrength(), item.getAttributes().getDexterity(), item.getAttributes().getIntelligence()));
     totalAttributes.mergeAttributes(itemAttributes, baseAttributes);
-    System.out.println(totalAttributes.getStrength());
   }
 
   public Character(String name, int strength, int dexterity, int intelligence) {
@@ -64,10 +58,7 @@ public abstract class Character {
 
   public void calculateTotal() {
     totalAttributes = baseAttributes;
-    slots.forEach((slot, item) -> {
-      if (item instanceof Armor)
-        baseAttributes.addAttribute(((Armor) item).primaryAttribute);
-    });
+    baseAttributes.addToAttributes(itemAttributes.getStrength(), itemAttributes.getDexterity(), itemAttributes.getIntelligence());
   }
 
   HashMap<EquipmentSlots, Item> slots = new HashMap<>();
@@ -91,6 +82,11 @@ public abstract class Character {
       }
     }
     if (item.getClass().equals(Armor.class)) {
+      for (int i = 0; i < slots.size(); i++) {
+        if (item.getClass() != (Weapon.class)) {
+//          baseAttributes.getStrength() + itemAttributes.getStrength();
+        }
+      }
       for (int i = 0; i < getArmorList().length; i++) {
         try {
           if (getArmorList()[i].equals(item.getArmorType()) && level >= item.getRequiredLevel()) {
@@ -116,6 +112,7 @@ public abstract class Character {
   StringBuilder displayAll = new StringBuilder();
 
   public String display() {
+
     displayAll.append("CharacterName: " + name + " ");
     displayAll.append("CharacterLevel: " + level + " ");
     displayAll.append("Strength: " + baseAttributes.getStrength() + " ");
@@ -124,12 +121,13 @@ public abstract class Character {
     return displayAll.toString();
   }
 
-  /*Check if weapon is null than it will return 0 otherwise it will return the DPS for the weapon.*/
+  /*Check if weapon is null than it will return 1 otherwise it will return the DPS for the weapon.*/
   public float getWeaponDPS() {
     Weapon weapon = (Weapon) slots.get(EquipmentSlots.Weapon);
-    if (weapon == null) return 0;
+    if (weapon == null) return 1;
     return weapon.getDPS();
   }
+
 
   /**/
   protected abstract float calculateDPS(float weaponDPS);

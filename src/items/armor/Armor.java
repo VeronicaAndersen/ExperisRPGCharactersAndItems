@@ -1,10 +1,6 @@
 package items.armor;
-
-import characters.EquipmentSlots;
 import characters.PrimaryAttribute;
 import items.Item;
-
-import java.util.HashMap;
 
 public class Armor extends Item{
 

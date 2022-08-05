@@ -28,8 +28,6 @@ public class PrimaryAttribute {
     this.dexterity = attributes1.getDexterity() + attributes2.getDexterity();
     this.intelligence = attributes1.getIntelligence() + attributes2.getDexterity();
   }
-
-
   public int getStrength() {
     return strength;
   }
