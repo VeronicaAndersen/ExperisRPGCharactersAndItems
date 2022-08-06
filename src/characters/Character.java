@@ -4,6 +4,7 @@ import items.Item;
 import items.armor.Armor;
 import items.armor.ArmorType;
 import items.errors.InvalidArmorException;
+import items.errors.InvalidLevelException;
 import items.errors.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
@@ -74,43 +75,49 @@ public abstract class Character {
     return slots;
   }
 
-  /*Check if the character is allowed to equip by the requiredLevel and weapon types and same for armor.*/
-  public <T> void Equipments(EquipmentSlots slot, Item item, T[] types) {
-    if (item.getClass().equals(Weapon.class)) { //Check if the item is a weapon.
-      for (int i = 0; i < getWeaponsList().length; i++) { //Iterates through the list.
-        try {
-          if (getWeaponsList()[i].equals(item.getWeaponType()) && level >= item.getRequiredLevel()) { // Check if the item is allowed regarding the level & allowed type.
-            slots.put(slot, item); // Adds the item to the list.
-            collectTotalAttributes();
-            System.out.println("This weapon is allowed");
-            break;
-          } else {
-            throw new InvalidWeaponException("This weapon is not allowed depending on your level or type of weapon.");
-          }
-        } catch (InvalidWeaponException invalidWeaponException) {
+  /*Check if the character is allowed to equip by armor types.*/
+  public <T> void equipArmor(EquipmentSlots slot, Item item) throws InvalidArmorException, InvalidLevelException {
+    checkLevel(item);
+    if (item.getClass().equals(Armor.class)) {
+      for (int i = 0; i < getArmorList().length; i++) {
+        if (getArmorList()[i].equals(item.getArmorType())) { // Check if the item is allowed regarding the level & allowed type.
+          slots.put(slot, item); // Adds the item to the list.
+          collectTotalAttributes();
+          System.out.println("This armor is allowed");
           break;
-        }
-      }
-    }
-    if (item.getClass().equals(Armor.class)) { //Check if the item is an armor.
-      for (int i = 0; i < getArmorList().length; i++) { //Iterates through the list.
-        try {
-          if (getArmorList()[i].equals(item.getArmorType()) && level >= item.getRequiredLevel()) { // Check if the item is allowed regarding the level & allowed type.
-            slots.put(slot, item); // Adds the item to the list.
-            collectTotalAttributes(); // Add the attributes to the total.
-            System.out.println("This armor is allowed");
-            break;
-          } else {
-            throw new InvalidArmorException("This armor is not allowed depending on your level or type of armor.");
-          }
-        } catch (InvalidArmorException invalidWeaponException) {
-          break;
+        } else {
+          throw new InvalidArmorException("This type of armor cannot be equipped to this character.");
         }
       }
     }
   }
 
+  /*Check if the character is allowed to equip by weapon types.*/
+  public <T> void equipWeapon(EquipmentSlots slot, Item item) throws InvalidWeaponException, InvalidLevelException {
+    checkLevel(item);
+    if (item.getClass().equals(Weapon.class)) {
+      for (int i = 0; i < getWeaponsList().length; i++) {
+        if (getWeaponsList()[i].equals(item.getWeaponType())) { // Check if the item is allowed regarding the level & allowed type.
+          slots.put(slot, item); // Adds the item to the list.
+          collectTotalAttributes();
+          System.out.println("This weapon is allowed");
+          break;
+        } else {
+          throw new InvalidWeaponException("This type of weapon cannot be equipped to this character.");
+        }
+      }
+    }
+  }
 
+  /*Method that checks level*/
+  public boolean checkLevel(Item item) throws InvalidLevelException {
+    if (item.getRequiredLevel() > level) {
+      throw new InvalidLevelException("Can´t be equipped to this character regarding level requirement.");
+    } else {
+      System.out.println("Level allowed");
+      return true;
+    }
+  }
 
   /*Displaying the required stats & return it as a string.*/
   public String display() {
@@ -118,19 +125,20 @@ public abstract class Character {
     StringBuilder displayStats = new StringBuilder();
     displayStats.append("Character Name: " + getName());
     displayStats.append("\nCharacter Level: " + getLevel());
-    displayStats.append("\nStrength: " + baseAttributes.getStrength());
-    displayStats.append("\nDexterity: " + baseAttributes.getDexterity());
-    displayStats.append("\nIntelligence: " + baseAttributes.getIntelligence());
-    displayStats.append("\nDamage: "+ getCharacterDPS());
+    displayStats.append("\nStrength: " + totalAttributes.getStrength());
+    displayStats.append("\nDexterity: " + totalAttributes.getDexterity());
+    displayStats.append("\nIntelligence: " + totalAttributes.getIntelligence());
+    displayStats.append("\nDamage: " + getCharacterDPS());
     return displayStats.toString();
   }
-/*Displaying equipped items.*/
-  public String displayEquipItems(){
+
+  /*Displaying equipped items.*/
+  public String displayEquipItems() {
     StringBuilder displayEquip = new StringBuilder();
-    displayEquip.append("Head: " + (getSlots().get(EquipmentSlots.Head) == null? "Empty" : getSlots().get(EquipmentSlots.Head).getName()));
-    displayEquip.append("\nBody: " + (getSlots().get(EquipmentSlots.Body) == null? "Empty" : getSlots().get(EquipmentSlots.Body).getName()));
-    displayEquip.append("\nLegs: " + (getSlots().get(EquipmentSlots.Legs) == null? "Empty" : getSlots().get(EquipmentSlots.Legs).getName()));
-    displayEquip.append("\nWeapon: " + (getSlots().get(EquipmentSlots.Weapon) == null? "Empty" : getSlots().get(EquipmentSlots.Weapon).getName()));
+    displayEquip.append("Head: " + (getSlots().get(EquipmentSlots.Head) == null ? "Empty" : getSlots().get(EquipmentSlots.Head).getName()));
+    displayEquip.append("\nBody: " + (getSlots().get(EquipmentSlots.Body) == null ? "Empty" : getSlots().get(EquipmentSlots.Body).getName()));
+    displayEquip.append("\nLegs: " + (getSlots().get(EquipmentSlots.Legs) == null ? "Empty" : getSlots().get(EquipmentSlots.Legs).getName()));
+    displayEquip.append("\nWeapon: " + (getSlots().get(EquipmentSlots.Weapon) == null ? "Empty" : getSlots().get(EquipmentSlots.Weapon).getName()));
     return displayEquip.toString();
   }
 
@@ -146,11 +154,12 @@ public abstract class Character {
     return calculateDPS(getWeaponDPS());
   }
 
-  public int getLevel(){
+  public int getLevel() {
 //    System.out.println(level);
     return level;
   }
-  public String getName(){
+
+  public String getName() {
 //    System.out.println(name);
     return name;
   }

@@ -5,29 +5,31 @@ import characters.Ranger;
 import items.Item;
 import items.armor.Armor;
 import items.armor.ArmorType;
+import items.errors.InvalidArmorException;
+import items.errors.InvalidLevelException;
+import items.errors.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
 
 import java.util.Arrays;
 
 public class Main {
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InvalidArmorException, InvalidWeaponException, InvalidLevelException {
     Mage mageCharacter = new Mage("Nemo");
     Ranger rangerCharacter = new Ranger("Aladdin");
 
-    Armor armor2 = new Armor("A Random Armor Body", 1, 1, 1, 1, ArmorType.Leather);
-    rangerCharacter.Equipments(EquipmentSlots.Body, armor2, rangerCharacter.getArmorList());
+    Armor armor2 = new Armor("A Random Armor Body", 1, 1, 1, 1, ArmorType.Plate);
+    rangerCharacter.equipArmor(EquipmentSlots.Body, armor2);
 
     armor2 = new Armor("A Random Armor Head", 1, 1, 1, 1, ArmorType.Leather);
-    rangerCharacter.Equipments(EquipmentSlots.Head, armor2, rangerCharacter.getArmorList());
-    armor2 = new Armor("A Random Armor Legs", 1, 1, 1, 1, ArmorType.Leather);
-    rangerCharacter.Equipments(EquipmentSlots.Legs, armor2, rangerCharacter.getArmorList());
+    rangerCharacter.equipArmor(EquipmentSlots.Head, armor2);
 
-    Weapon weapon = new Weapon("A Random Weapon", 1, 1, WeaponType.Staffs);
-    weapon.setSlot(EquipmentSlots.Head);
+    Weapon weapon = new Weapon("A Random Weapon", 1, 1, 1, WeaponType.Wands);
+    rangerCharacter.equipWeapon(EquipmentSlots.Weapon, weapon);
+//    weapon.setSlot(EquipmentSlots.Weapon);
 //    System.out.println(weapon.getName());
 
-//    rangerCharacter.levelUp();
+    rangerCharacter.levelUp();
 
     //rangerCharacter.Equipments(EquipmentSlots.Head, weapon, character.getWeaponsList());
 
@@ -37,6 +39,7 @@ public class Main {
     rangerCharacter.calculateTotal();
     System.out.println(rangerCharacter.display());
     System.out.println(rangerCharacter.displayEquipItems());
+
 //    System.out.println(rangerCharacter.getSlots());
 //    rangerCharacter.getName();
 //    System.out.println(rangerCharacter.getCharacterDPS());
