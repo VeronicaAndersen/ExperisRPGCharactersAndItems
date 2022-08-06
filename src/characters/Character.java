@@ -115,13 +115,12 @@ public abstract class Character {
 
   /*Displaying the required stats & return it as a string.*/
   public String display() {
-
-    displayStats.append("CharacterName: " + name + " ");
-    displayStats.append("CharacterLevel: " + level + " ");
-    displayStats.append("Strength: " + baseAttributes.getStrength() + " ");
-    displayStats.append("Dexterity: " + baseAttributes.getDexterity() + " ");
-    displayStats.append("Intelligence: " + baseAttributes.getIntelligence() + " ");
-    displayStats.append("Damage: "+ getCharacterDPS() + " ");
+    displayStats.append("Character Name: " + getName());
+    displayStats.append("\nCharacter Level: " + getLevel());
+    displayStats.append("\nStrength: " + baseAttributes.getStrength());
+    displayStats.append("\nDexterity: " + baseAttributes.getDexterity());
+    displayStats.append("\nIntelligence: " + baseAttributes.getIntelligence());
+    displayStats.append("\nDamage: "+ getCharacterDPS());
     return displayStats.toString();
   }
 
@@ -136,4 +135,14 @@ public abstract class Character {
   public float getCharacterDPS() {
     return calculateDPS(getWeaponDPS());
   }
+
+  public int getLevel(){
+    System.out.println(level);
+    return level;
+  }
+  public String getName(){
+    System.out.println(name);
+    return name;
+  }
+
 }

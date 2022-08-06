@@ -19,7 +19,7 @@ public class Main {
 //    weapon.setSlot(EquipmentSlots.Head);
 //    System.out.println(weapon.getName());
 
-//    character.levelUp();
+    rangerCharacter.levelUp();
 //    character.levelUp();
 
     //character.Equipments(EquipmentSlots.Head, weapon, character.getWeaponsList());
@@ -28,7 +28,9 @@ public class Main {
     //System.out.println("Armor: " + character.getSlots().get(EquipmentSlots.Head).getName());
     //System.out.println("Weapon: " + character.getSlots().get(EquipmentSlots.Weapon).getName());
     rangerCharacter.calculateTotal();
-    System.out.println("After: " + rangerCharacter.display());
+    System.out.println(rangerCharacter.display());
+    rangerCharacter.getName();
+    System.out.println(rangerCharacter.getCharacterDPS());
 //    mageCharacter.calculateTotal();
 //    System.out.println(mageCharacter.display());
 //    character.calculateTotal();
