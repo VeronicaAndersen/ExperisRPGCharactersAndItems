@@ -55,7 +55,7 @@ public abstract class Character {
   PrimaryAttribute totalAttributes = new PrimaryAttribute();     //Total primary attributes of the character
 
   /*Method that adds all attributes from the items to totalAttributes.*/
-  public void collectTotalAttributes() {
+  private void collectTotalAttributes() {
     itemAttributes.setToAttributes(0, 0, 0);
     slots.forEach((slot, item) -> itemAttributes.addToAttributes(item.getAttributes().getStrength(), item.getAttributes().getDexterity(), item.getAttributes().getIntelligence()));
     totalAttributes.mergeAttributes(itemAttributes, baseAttributes);
@@ -67,27 +67,24 @@ public abstract class Character {
     baseAttributes.addToAttributes(itemAttributes.getStrength(), itemAttributes.getDexterity(), itemAttributes.getIntelligence());
   }
 
-  /*Creates a hashmap for the equipmentslots.*/
+  /*Creates a hashmap for the equipments slots.*/
   HashMap<EquipmentSlots, Item> slots = new HashMap<>();
 
   /*Creates method for hashmap that returns slots.*/
-  public HashMap<EquipmentSlots, Item> getSlots() {
+  HashMap<EquipmentSlots, Item> getSlots() {
     return slots;
   }
 
   /*Check if the character is allowed to equip by armor types.*/
   public <T> void equipArmor(EquipmentSlots slot, Item item) throws InvalidArmorException, InvalidLevelException {
     checkLevel(item);
-    if (item.getClass().equals(Armor.class)) {
-      for (int i = 0; i < getArmorList().length; i++) {
-        if (getArmorList()[i].equals(item.getArmorType())) { // Check if the item is allowed regarding the level & allowed type.
-          slots.put(slot, item); // Adds the item to the list.
-          collectTotalAttributes();
-          System.out.println("This armor is allowed");
-          break;
-        } else {
-          throw new InvalidArmorException("This type of armor cannot be equipped to this character.");
-        }
+    for (int i = 0; i < getArmorList().length; i++) {
+      if (getArmorList()[i].equals(item.getArmorType())) { // Check if the item is allowed regarding the level & allowed type.
+        slots.put(slot, item); // Adds the item to the list.
+        collectTotalAttributes();
+        break;
+      } else {
+        throw new InvalidArmorException("This type of armor cannot be equipped to this character.");
       }
     }
   }
@@ -95,16 +92,13 @@ public abstract class Character {
   /*Check if the character is allowed to equip by weapon types.*/
   public <T> void equipWeapon(EquipmentSlots slot, Item item) throws InvalidWeaponException, InvalidLevelException {
     checkLevel(item);
-    if (item.getClass().equals(Weapon.class)) {
-      for (int i = 0; i < getWeaponsList().length; i++) {
-        if (getWeaponsList()[i].equals(item.getWeaponType())) { // Check if the item is allowed regarding the level & allowed type.
-          slots.put(slot, item); // Adds the item to the list.
-          collectTotalAttributes();
-          System.out.println("This weapon is allowed");
-          break;
-        } else {
-          throw new InvalidWeaponException("This type of weapon cannot be equipped to this character.");
-        }
+    for (int i = 0; i < getWeaponsList().length; i++) {
+      if (getWeaponsList()[i].equals(item.getWeaponType())) { // Check if the item is allowed regarding the level & allowed type.
+        slots.put(slot, item); // Adds the item to the list.
+        collectTotalAttributes();
+        break;
+      } else {
+        throw new InvalidWeaponException("This type of weapon cannot be equipped to this character.");
       }
     }
   }
@@ -114,7 +108,6 @@ public abstract class Character {
     if (item.getRequiredLevel() > level) {
       throw new InvalidLevelException("Can´t be equipped to this character regarding level requirement.");
     } else {
-      System.out.println("Level allowed");
       return true;
     }
   }
@@ -155,12 +148,10 @@ public abstract class Character {
   }
 
   public int getLevel() {
-//    System.out.println(level);
     return level;
   }
 
   public String getName() {
-//    System.out.println(name);
     return name;
   }
 
