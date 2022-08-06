@@ -81,7 +81,7 @@ public abstract class Character {
         try {
           if (getWeaponsList()[i].equals(item.getWeaponType()) && level >= item.getRequiredLevel()) { // Check if the item is allowed regarding the level & allowed type.
             slots.put(slot, item); // Adds the item to the list.
-            //collectTotalAttributes();
+            collectTotalAttributes();
             System.out.println("This weapon is allowed");
             break;
           } else {
@@ -110,11 +110,12 @@ public abstract class Character {
     }
   }
 
-  /*Creating a stringBuilder for the required stats.*/
-  StringBuilder displayStats = new StringBuilder();
+
 
   /*Displaying the required stats & return it as a string.*/
   public String display() {
+    /*Creating a stringBuilder for the required stats.*/
+    StringBuilder displayStats = new StringBuilder();
     displayStats.append("Character Name: " + getName());
     displayStats.append("\nCharacter Level: " + getLevel());
     displayStats.append("\nStrength: " + baseAttributes.getStrength());
@@ -122,6 +123,15 @@ public abstract class Character {
     displayStats.append("\nIntelligence: " + baseAttributes.getIntelligence());
     displayStats.append("\nDamage: "+ getCharacterDPS());
     return displayStats.toString();
+  }
+/*Displaying equipped items.*/
+  public String displayEquipItems(){
+    StringBuilder displayEquip = new StringBuilder();
+    displayEquip.append("Head: " + (getSlots().get(EquipmentSlots.Head) == null? "Empty" : getSlots().get(EquipmentSlots.Head).getName()));
+    displayEquip.append("\nBody: " + (getSlots().get(EquipmentSlots.Body) == null? "Empty" : getSlots().get(EquipmentSlots.Body).getName()));
+    displayEquip.append("\nLegs: " + (getSlots().get(EquipmentSlots.Legs) == null? "Empty" : getSlots().get(EquipmentSlots.Legs).getName()));
+    displayEquip.append("\nWeapon: " + (getSlots().get(EquipmentSlots.Weapon) == null? "Empty" : getSlots().get(EquipmentSlots.Weapon).getName()));
+    return displayEquip.toString();
   }
 
   /*Check if weapon is null than it will return 1 otherwise it will return the DPS for the weapon.*/
@@ -137,11 +147,11 @@ public abstract class Character {
   }
 
   public int getLevel(){
-    System.out.println(level);
+//    System.out.println(level);
     return level;
   }
   public String getName(){
-    System.out.println(name);
+//    System.out.println(name);
     return name;
   }
 
