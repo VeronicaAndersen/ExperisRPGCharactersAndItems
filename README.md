@@ -6,7 +6,7 @@ Project that was created for an assigment in Java. This application allows the u
 ### Downloading
 The application is free to clone straight from gitlab. Type this into your selected git console to get the current main version: 
 ```
-git clone git@gitlab.com:VeronicaAndersen/java-1:git
+git clone git@gitlab.com:VeronicaAndersen/java-1.git
 ```
 
 ## Usage
