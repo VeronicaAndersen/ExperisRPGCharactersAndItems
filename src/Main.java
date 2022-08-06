@@ -1,6 +1,7 @@
 
 import characters.EquipmentSlots;
 import characters.Mage;
+import characters.Ranger;
 import items.armor.Armor;
 import items.armor.ArmorType;
 import items.weapons.Weapon;
@@ -8,13 +9,15 @@ import items.weapons.WeaponType;
 
 public class Main {
   public static void main(String[] args) {
-    Mage character = new Mage("Nemo");
-    Armor armor = new Armor("A Random Armor", 1, 1, 1, 1, ArmorType.Cloth);
-    character.Equipments(EquipmentSlots.Head, armor, character.getArmorList());
-    Armor armor2 = new Armor("A Random Name", 1, 1, 1, 1, ArmorType.Cloth);
-    character.Equipments(EquipmentSlots.Body, armor2, character.getArmorList());
-    Weapon weapon = new Weapon("A Random Weapon", 1, 1, WeaponType.Staffs);
-    //weapon.setSlot(EquipmentSlots.Head);
+    Mage mageCharacter = new Mage("Nemo");
+    Ranger rangerCharacter = new Ranger("Aladdin");
+//    Armor armor = new Armor("A Random Armor", 1, 1, 1, 1, ArmorType.Cloth);
+//    mageCharacter.Equipments(EquipmentSlots.Head, armor, mageCharacter.getArmorList());
+    Armor armor2 = new Armor("A Random Name", 1, 1, 1, 1, ArmorType.Leather);
+    rangerCharacter.Equipments(EquipmentSlots.Body, armor2, rangerCharacter.getArmorList());
+//    Weapon weapon = new Weapon("A Random Weapon", 1, 1, WeaponType.Staffs);
+//    weapon.setSlot(EquipmentSlots.Head);
+//    System.out.println(weapon.getName());
 
 //    character.levelUp();
 //    character.levelUp();
@@ -24,8 +27,10 @@ public class Main {
 //    character.Equipments(EquipmentSlots.Weapon, weapon, character.getWeaponsList());
     //System.out.println("Armor: " + character.getSlots().get(EquipmentSlots.Head).getName());
     //System.out.println("Weapon: " + character.getSlots().get(EquipmentSlots.Weapon).getName());
-    character.calculateTotal();
-    System.out.println(character.display());
+    rangerCharacter.calculateTotal();
+    System.out.println("After: " + rangerCharacter.display());
+//    mageCharacter.calculateTotal();
+//    System.out.println(mageCharacter.display());
 //    character.calculateTotal();
 //    System.out.println(character.getCharacterDPS());
 //    System.out.println("Armors: " + Arrays.toString(character.getArmorList()));
