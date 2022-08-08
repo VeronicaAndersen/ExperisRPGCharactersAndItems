@@ -9,6 +9,7 @@ import items.errors.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public abstract class Character {
@@ -63,7 +64,7 @@ public abstract class Character {
 
   /*Method that sets baseAttributes to totalAttributes.*/
   public void calculateTotal() {
-    totalAttributes = baseAttributes; /**OKLART????????**/
+    totalAttributes = baseAttributes;
     baseAttributes.addToAttributes(itemAttributes.getStrength(), itemAttributes.getDexterity(), itemAttributes.getIntelligence());
   }
 
@@ -76,28 +77,33 @@ public abstract class Character {
   }
 
   /*Check if the character is allowed to equip by armor types.*/
-  public <T> void equipArmor(EquipmentSlots slot, Item item) throws InvalidArmorException, InvalidLevelException {
+  public void equipArmor(EquipmentSlots slot, Item item) throws InvalidArmorException, InvalidLevelException {
     checkLevel(item);
-    for (int i = 0; i < getArmorList().length; i++) {
-      if (getArmorList()[i].equals(item.getArmorType())) { // Check if the item is allowed regarding the level & allowed type.
+    ArmorType[] armorTypes = getArmorList();
+    for (ArmorType armorType : armorTypes) {
+      if (armorType.equals(item.getArmorType())) { // Check if the item is allowed regarding the level & allowed type.
         slots.put(slot, item); // Adds the item to the list.
         collectTotalAttributes();
         break;
-      } else {
-        throw new InvalidArmorException("This type of armor cannot be equipped to this character.");
       }
+    }if(slots.get(slot) != item) {
+      throw new InvalidArmorException("This type of armor cannot be equipped to this character.");
     }
   }
 
   /*Check if the character is allowed to equip by weapon types.*/
-  public <T> void equipWeapon(EquipmentSlots slot, Item item) throws InvalidWeaponException, InvalidLevelException {
+  public void equipWeapon(EquipmentSlots slot, Item item) throws InvalidWeaponException, InvalidLevelException {
     checkLevel(item);
-    for (int i = 0; i < getWeaponsList().length; i++) {
-      if (getWeaponsList()[i].equals(item.getWeaponType())) { // Check if the item is allowed regarding the level & allowed type.
-        slots.put(slot, item); // Adds the item to the list.
-        collectTotalAttributes();
-        break;
-      } else {
+    WeaponType[] weaponTypes = getWeaponsList();
+    if (item.getClass().equals(Weapon.class)) {
+      for (WeaponType weaponType : weaponTypes) {
+        if (weaponType.equals(item.getWeaponType())) { // Check if the item is allowed regarding the level & allowed type.
+          slots.put(slot, item); // Adds the item to the list.
+          collectTotalAttributes();
+          break;
+        }
+      }
+      if(slots.get(slot) != item) {
         throw new InvalidWeaponException("This type of weapon cannot be equipped to this character.");
       }
     }

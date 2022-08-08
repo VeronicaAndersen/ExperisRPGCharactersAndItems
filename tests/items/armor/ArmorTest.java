@@ -5,9 +5,6 @@ import characters.Ranger;
 import characters.Warrior;
 import items.errors.InvalidArmorException;
 import items.errors.InvalidLevelException;
-import items.errors.InvalidWeaponException;
-import items.weapons.Weapon;
-import items.weapons.WeaponType;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,17 +13,24 @@ class ArmorTest {
   /*_________________________________ TEST EQUIP ITEMS. _______________________________*/
   @Test
   void TestEquipArmor_TooLowLevel_ShouldThrowException()  {
-    Ranger ranger = new Ranger("Gizmo");
-    Armor armor = new Armor("Something", 1, 2, 3, 8, ArmorType.Mail);
+    Warrior warrior = new Warrior("Gizmo");
+    Armor armor = new Armor("Ballistic Protection", 1, 2, 3, 2, ArmorType.Plate);
 
-    assertThrows(InvalidLevelException.class, () -> ranger.checkLevel(armor));
+    assertThrows(InvalidLevelException.class, () -> warrior.checkLevel(armor));
+  }
+  @Test
+  void TestEquipArmor_OkLevel_ShouldEquip() throws InvalidArmorException, InvalidLevelException {
+    Warrior warrior = new Warrior("Gizmo");
+    Armor armor = new Armor("Ballistic Protection", 1, 2, 3, 1, ArmorType.Mail);
+
+    warrior.equipArmor(EquipmentSlots.Head, armor);
   }
   @Test
   void TestEquipArmor_WrongArmorType_ShouldThrowException() {
-    Ranger ranger = new Ranger("Gizmo");
-    Armor armor = new Armor("A Random Armor Head", 1, 1, 1, 1, ArmorType.Plate);
+    Warrior warrior = new Warrior("Gizmo");
+    Armor armor = new Armor("Common Cloth", 1, 2, 3, 1, ArmorType.Cloth);
 
-    assertThrows(InvalidArmorException.class, () -> ranger.equipArmor(EquipmentSlots.Body, armor));
+    assertThrows(InvalidArmorException.class, () -> warrior.equipArmor(EquipmentSlots.Body, armor));
   }
 
   @Test

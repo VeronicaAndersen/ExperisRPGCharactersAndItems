@@ -5,6 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/items/armor/ArmorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/items/armor/ArmorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +64,7 @@
       <recent name="characters" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.WeaponTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JavaAssignment1" />
@@ -100,7 +102,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WeaponTest.TestEquipWeapon_TooLowLevel_ShouldThrowException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WeaponTest.TestEquip_RightWeaponType_ShouldEquip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAssignment1" />
       <extension name="coverage">
         <pattern>
@@ -110,13 +112,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="items.weapons" />
       <option name="MAIN_CLASS_NAME" value="items.weapons.WeaponTest" />
-      <option name="METHOD_NAME" value="TestEquipWeapon_TooLowLevel_ShouldThrowException" />
+      <option name="METHOD_NAME" value="TestEquip_RightWeaponType_ShouldEquip" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WeaponTest.TestEquipWeapon_WrongWeaponType_ShouldThrowException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WeaponTest.TestEquip_WeaponEquip_ShouldReturnDPS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAssignment1" />
       <extension name="coverage">
         <pattern>
@@ -126,7 +128,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="items.weapons" />
       <option name="MAIN_CLASS_NAME" value="items.weapons.WeaponTest" />
-      <option name="METHOD_NAME" value="TestEquipWeapon_WrongWeaponType_ShouldThrowException" />
+      <option name="METHOD_NAME" value="TestEquip_WeaponEquip_ShouldReturnDPS" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WeaponTest" />
+        <item itemvalue="JUnit.WeaponTest.TestEquip_WeaponEquip_ShouldReturnDPS" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ArmorTest" />
-        <item itemvalue="JUnit.WeaponTest.TestEquipWeapon_WrongWeaponType_ShouldThrowException" />
-        <item itemvalue="JUnit.WeaponTest" />
-        <item itemvalue="JUnit.WeaponTest.TestEquipWeapon_TooLowLevel_ShouldThrowException" />
+        <item itemvalue="JUnit.WeaponTest.TestEquip_RightWeaponType_ShouldEquip" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +156,7 @@
       <workItem from="1659440417675" duration="76549000" />
       <workItem from="1659776885942" duration="46000" />
       <workItem from="1659776948025" duration="879000" />
-      <workItem from="1659777839835" duration="22875000" />
+      <workItem from="1659777839835" duration="39343000" />
     </task>
     <servers />
   </component>
