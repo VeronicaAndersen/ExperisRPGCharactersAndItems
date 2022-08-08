@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4ed172e-bb79-4e06-8f5a-29759275df06" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/items/ItemTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/items/armor/ArmorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/items/armor/ArmorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -14,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -57,12 +58,13 @@
       <recent name="characters" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="items" />
       <recent name="items.weapons" />
       <recent name="items.armor" />
       <recent name="characters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArmorTest.TestEquipArmor_OkLevel_ShouldEquip">
+  <component name="RunManager" selected="JUnit.ItemTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JavaAssignment1" />
@@ -101,16 +103,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CharacterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ItemTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAssignment1" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="characters.*" />
+          <option name="PATTERN" value="items.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="characters" />
-      <option name="MAIN_CLASS_NAME" value="characters.CharacterTest" />
+      <option name="PACKAGE_NAME" value="items" />
+      <option name="MAIN_CLASS_NAME" value="items.ItemTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,11 +136,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ItemTest" />
         <item itemvalue="JUnit.ArmorTest.TestEquipArmor_OkLevel_ShouldEquip" />
         <item itemvalue="JUnit.WeaponTest.TestEquip_RightWeaponType_ShouldEquip" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ArmorTest" />
-        <item itemvalue="JUnit.CharacterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -154,7 +156,7 @@
       <workItem from="1659440417675" duration="76549000" />
       <workItem from="1659776885942" duration="46000" />
       <workItem from="1659776948025" duration="879000" />
-      <workItem from="1659777839835" duration="53786000" />
+      <workItem from="1659777839835" duration="54625000" />
     </task>
     <servers />
   </component>

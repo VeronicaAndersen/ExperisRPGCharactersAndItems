@@ -1,19 +1,54 @@
-package items.weapons;
+package items;
 
 import characters.EquipmentSlots;
+import characters.Ranger;
 import characters.Warrior;
 import items.armor.Armor;
 import items.armor.ArmorType;
 import items.errors.InvalidArmorException;
 import items.errors.InvalidLevelException;
 import items.errors.InvalidWeaponException;
+import items.weapons.Weapon;
+import items.weapons.WeaponType;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class WeaponTest {
+class ItemTest {
+  /*_________________________________ TEST EQUIP ITEMS ARMOR. _______________________________*/
+  @Test
+  void TestEquipArmor_TooLowLevel_ShouldThrowException() {
+    Warrior warrior = new Warrior("Gizmo");
+    Armor armor = new Armor("Ballistic Protection", 1, 2, 3, 2, ArmorType.Plate);
+
+    assertThrows(InvalidLevelException.class, () -> warrior.checkLevel(armor));
+  }
+
+  @Test
+  void TestEquipArmor_OkLevel_ShouldEquip() throws InvalidArmorException, InvalidLevelException {
+    Warrior warrior = new Warrior("Gizmo");
+    Armor armor = new Armor("Ballistic Protection", 1, 2, 3, 1, ArmorType.Mail);
+
+    warrior.equipArmor(EquipmentSlots.Head, armor);
+    assertEquals(armor, warrior.getSlots().get(EquipmentSlots.Head));
+  }
+
+  @Test
+  void TestEquipArmor_WrongArmorType_ShouldThrowException() {
+    Warrior warrior = new Warrior("Gizmo");
+    Armor armor = new Armor("Common Cloth", 1, 2, 3, 1, ArmorType.Cloth);
+
+    assertThrows(InvalidArmorException.class, () -> warrior.equipArmor(EquipmentSlots.Body, armor));
+  }
+
+  @Test
+  void TestEquip_RightArmorType_ShouldEquip() throws InvalidArmorException, InvalidLevelException {
+    Ranger ranger = new Ranger("Gizmo");
+    Armor armor = new Armor("A Random Armor Head", 1, 1, 1, 1, ArmorType.Leather);
+    ranger.equipArmor(EquipmentSlots.Head, armor);
+  }
+
+  /*_________________________________ TEST EQUIP ITEMS WEAPON. _______________________________*/
   @Test
   void TestEquipWeapon_TooLowLevel_ShouldThrowException() {
     Warrior warrior = new Warrior("Gizmo");
@@ -54,6 +89,7 @@ class WeaponTest {
     assertEquals(7 * (1 + (5 / 100f)), expected);
   }
 
+  /*_________________________________ TEST EQUIP ITEMS ARMOR & WEAPON. _______________________________*/
   @Test
   void TestEquip_WeaponAndArmorEquip_ShouldReturnDPS() throws InvalidWeaponException, InvalidLevelException, InvalidArmorException {
     Warrior warrior = new Warrior("Nemo");
@@ -64,4 +100,5 @@ class WeaponTest {
     float expected = warrior.calculateDPS(warrior.getWeaponDPS());
     assertEquals((7 * 1.1f) * (1 + ((5f + 1f) / 100f)), expected);
   }
+
 }
