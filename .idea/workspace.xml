@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b4ed172e-bb79-4e06-8f5a-29759275df06" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Character.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/characters/Mage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Mage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/characters/Ranger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Ranger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/characters/Rogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Rogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/characters/Warrior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Warrior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/items/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/items/weapons/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/characters/CharacterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/characters/CharacterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +61,14 @@
       <recent name="characters" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ArmorTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="JavaAssignment1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArmorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAssignment1" />
       <extension name="coverage">
@@ -131,29 +130,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WeaponTest.TestEquip_WeaponEquip_ShouldReturnDPS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaAssignment1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="items.weapons.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="items.weapons" />
-      <option name="MAIN_CLASS_NAME" value="items.weapons.WeaponTest" />
-      <option name="METHOD_NAME" value="TestEquip_WeaponEquip_ShouldReturnDPS" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ArmorTest" />
         <item itemvalue="JUnit.CharacterTest" />
         <item itemvalue="JUnit.WeaponTest" />
         <item itemvalue="JUnit.WeaponTest.TestEquip_WeaponAndArmorEquip_ShouldReturnDPS" />
-        <item itemvalue="JUnit.WeaponTest.TestEquip_WeaponEquip_ShouldReturnDPS" />
       </list>
     </recent_temporary>
   </component>
@@ -169,7 +152,7 @@
       <workItem from="1659440417675" duration="76549000" />
       <workItem from="1659776885942" duration="46000" />
       <workItem from="1659776948025" duration="879000" />
-      <workItem from="1659777839835" duration="51349000" />
+      <workItem from="1659777839835" duration="52170000" />
     </task>
     <servers />
   </component>
