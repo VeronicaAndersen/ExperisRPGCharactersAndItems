@@ -1,7 +1,6 @@
 package characters;
 
 import items.Item;
-import items.armor.Armor;
 import items.armor.ArmorType;
 import items.errors.InvalidArmorException;
 import items.errors.InvalidLevelException;
@@ -9,12 +8,11 @@ import items.errors.InvalidWeaponException;
 import items.weapons.Weapon;
 import items.weapons.WeaponType;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public abstract class Character {
   /*Creating private variables.*/
-  private String name;
+  private final String name;
   private int level = 1;
   private ArmorType[] armorList = {};
   private WeaponType[] weaponsList = {};
@@ -81,12 +79,14 @@ public abstract class Character {
     checkLevel(item);
     ArmorType[] armorTypes = getArmorList();
     for (ArmorType armorType : armorTypes) {
-      if (armorType.equals(item.getArmorType())) { // Check if the item is allowed regarding the level & allowed type.
+      if (armorType.equals(item.getArmorType())) { // Check if the item is an allowed type.
         slots.put(slot, item); // Adds the item to the list.
         collectTotalAttributes();
         break;
       }
-    }if(slots.get(slot) != item) {
+    }
+    /*Throws error messages if the item is not allowed for the character. */
+    if (slots.get(slot) != item) {
       throw new InvalidArmorException("This type of armor cannot be equipped to this character.");
     }
   }
@@ -97,13 +97,14 @@ public abstract class Character {
     WeaponType[] weaponTypes = getWeaponsList();
     if (item.getClass().equals(Weapon.class)) {
       for (WeaponType weaponType : weaponTypes) {
-        if (weaponType.equals(item.getWeaponType())) { // Check if the item is allowed regarding the level & allowed type.
+        if (weaponType.equals(item.getWeaponType())) { // Check if the item is an allowed type.
           slots.put(slot, item); // Adds the item to the list.
           collectTotalAttributes();
           break;
         }
       }
-      if(slots.get(slot) != item) {
+      /*Throws error messages if the item is not allowed for the character. */
+      if (slots.get(slot) != item) {
         throw new InvalidWeaponException("This type of weapon cannot be equipped to this character.");
       }
     }
@@ -144,7 +145,7 @@ public abstract class Character {
   /*Check if weapon is null than it will return 1 otherwise it will return the DPS for the weapon.*/
   public float getWeaponDPS() {
     Weapon weapon = (Weapon) slots.get(EquipmentSlots.Weapon);
-    if (weapon == null) return 1;
+    if (weapon == null) return calculateDPS(1);
     return weapon.getDPS();
   }
 
@@ -154,6 +155,7 @@ public abstract class Character {
   }
 
   public int getLevel() {
+    calculateTotal();
     return level;
   }
 

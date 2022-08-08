@@ -22,7 +22,7 @@ public class Warrior extends Character {
   /*Method that calculateDPS for the weapons.*/
   @Override
   public float calculateDPS(float weaponDPS) {
-    return weaponDPS * (1 + ((float) totalAttributes.getIntelligence() / 100));
+    return weaponDPS * (1 + ((float) totalAttributes.getStrength() / 100));
   }
 
   /*Method that get & sets the list of armorlist.*/

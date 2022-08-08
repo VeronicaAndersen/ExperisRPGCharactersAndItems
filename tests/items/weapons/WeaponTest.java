@@ -2,6 +2,9 @@ package items.weapons;
 
 import characters.EquipmentSlots;
 import characters.Warrior;
+import items.armor.Armor;
+import items.armor.ArmorType;
+import items.errors.InvalidArmorException;
 import items.errors.InvalidLevelException;
 import items.errors.InvalidWeaponException;
 import org.junit.jupiter.api.Test;
@@ -35,14 +38,25 @@ class WeaponTest {
   void TestEquip_NoWeaponEquip_ShouldReturnBaseDPS() {
     Warrior warrior = new Warrior("Nemo");
     float expected = warrior.getWeaponDPS();
-    assertEquals(expected, 1*(1 + (5 / 100f)));
+    assertEquals( 1*(1 + (5 / 100)),  expected);
   }
   @Test
   void TestEquip_WeaponEquip_ShouldReturnDPS() throws InvalidWeaponException, InvalidLevelException {
     Warrior warrior = new Warrior("Nemo");
     Weapon weapon = new Weapon("Common Axe", 7, 1, 1, WeaponType.Axes);
     warrior.equipWeapon(EquipmentSlots.Weapon, weapon);
-    float expected = warrior.getWeaponDPS();
-    assertEquals(expected, warrior.getWeaponDPS()*(1 + (5 / 100f)));
+    float expected = warrior.getCharacterDPS();
+    assertEquals( 7*(1 + (5 / 100f)), expected);
+  }
+
+  @Test
+  void TestEquip_WeaponAndArmorEquip_ShouldReturnDPS() throws InvalidWeaponException, InvalidLevelException, InvalidArmorException {
+    Warrior warrior = new Warrior("Nemo");
+    Weapon weapon = new Weapon("Common Axe", 7, 1.1f, 1, WeaponType.Axes);
+    Armor armor = new Armor("A Random Armor Head", 1, 1, 1, 1, ArmorType.Mail);
+    warrior.equipWeapon(EquipmentSlots.Weapon, weapon);
+    warrior.equipArmor(EquipmentSlots.Head, armor);
+    float expected = warrior.calculateDPS(warrior.getWeaponDPS());
+    assertEquals(  (7 * 1.1f) * (1 + ((5f+1f) / 100f)), expected);
   }
 }

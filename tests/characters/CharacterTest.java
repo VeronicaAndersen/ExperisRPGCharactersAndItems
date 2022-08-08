@@ -12,54 +12,98 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CharacterTest {
-  /*_________________________________ TEST LEVEL UP & ATTRIBUTES. _______________________________*/
+  /*_________________________________ TEST LEVEL 1. _______________________________*/
   @Test
-  void TestLevelUp_Mage_ShouldIncreaseAttributes() {
+  void TestLevel_Mage_ShouldBeLevelOne() {
+    Mage mageCharacter = new Mage("Aladdin");
+
+    assertEquals(1, mageCharacter.getLevel());
+  }
+
+
+  /*_________________________________ TEST BASE ATTRIBUTES. _______________________________*/
+  @Test
+  void TestLevelUp_Mage_ShouldShowBaseAttributes() {
+    Mage mageCharacter = new Mage("Aladdin");
+
+    assertEquals(1, mageCharacter.baseAttributes.getStrength());
+    assertEquals(1, mageCharacter.baseAttributes.getDexterity());
+    assertEquals(8, mageCharacter.baseAttributes.getIntelligence());
+  }
+
+  @Test
+  void TestLevelUp_Ranger_ShouldShowBaseAttributes() {
+    Ranger rangeCharacter = new Ranger("Aladdin");
+
+    assertEquals(1, rangeCharacter.baseAttributes.getStrength());
+    assertEquals(7, rangeCharacter.baseAttributes.getDexterity());
+    assertEquals(1, rangeCharacter.baseAttributes.getIntelligence());
+  }
+
+  @Test
+  void TestLevelUp_Rogue_ShouldShowBaseAttributes() {
+    Rogue rogueCharacter = new Rogue("Aladdin");
+
+    assertEquals(2, rogueCharacter.baseAttributes.getStrength());
+    assertEquals(6, rogueCharacter.baseAttributes.getDexterity());
+    assertEquals(1, rogueCharacter.baseAttributes.getIntelligence());
+  }
+
+  @Test
+  void TestLevelUp_Warrior_ShouldShowBaseAttributes() {
+    Warrior warriorCharacter = new Warrior("Aladdin");
+
+    assertEquals(5, warriorCharacter.baseAttributes.getStrength());
+    assertEquals(2, warriorCharacter.baseAttributes.getDexterity());
+    assertEquals(1, warriorCharacter.baseAttributes.getIntelligence());
+  }
+
+
+  /*_________________________________ TEST LEVEL UP & ATTRIBUTES. _______________________________*/
+
+
+  @Test
+  void TestLevelUp_Mage_ShouldIncreaseLevelAndAttributes() {
     Mage mageCharacter = new Mage("Aladdin");
     mageCharacter.levelUp();
-    PrimaryAttribute attributes = new PrimaryAttribute();
-    attributes.addToAttributes(2,2,13);
 
     assertEquals(2, mageCharacter.getLevel());
-    assertEquals(attributes.getStrength(), mageCharacter.baseAttributes.getStrength());
-    assertEquals(attributes.getDexterity(), mageCharacter.baseAttributes.getDexterity());
-    assertEquals(attributes.getIntelligence(), mageCharacter.baseAttributes.getIntelligence());
+    assertEquals(2, mageCharacter.totalAttributes.getStrength());
+    assertEquals(2, mageCharacter.totalAttributes.getDexterity());
+    assertEquals(13, mageCharacter.totalAttributes.getIntelligence());
   }
+
   @Test
-  void TestLevelUp_Ranger_ShouldIncreaseAttributes() {
+  void TestLevelUp_Ranger_ShouldIncreaseLevelAndAttributes() {
     Ranger rangeCharacter = new Ranger("Aladdin");
     rangeCharacter.levelUp();
-    PrimaryAttribute attributes = new PrimaryAttribute();
-    attributes.addToAttributes(2,12,2);
 
     assertEquals(2, rangeCharacter.getLevel());
-    assertEquals(attributes.getStrength(), rangeCharacter.baseAttributes.getStrength());
-    assertEquals(attributes.getDexterity(), rangeCharacter.baseAttributes.getDexterity());
-    assertEquals(attributes.getIntelligence(), rangeCharacter.baseAttributes.getIntelligence());
+    assertEquals(2, rangeCharacter.totalAttributes.getStrength());
+    assertEquals(12, rangeCharacter.totalAttributes.getDexterity());
+    assertEquals(2, rangeCharacter.totalAttributes.getIntelligence());
   }
+
   @Test
-  void TestLevelUp_Rogue_ShouldIncreaseAttributes() {
+  void TestLevelUp_Rogue_ShouldIncreaseLevelAndAttributes() {
     Rogue rogueCharacter = new Rogue("Aladdin");
     rogueCharacter.levelUp();
-    PrimaryAttribute attributes = new PrimaryAttribute();
-    attributes.addToAttributes(3,10,2);
 
     assertEquals(2, rogueCharacter.getLevel());
-    assertEquals(attributes.getStrength(), rogueCharacter.baseAttributes.getStrength());
-    assertEquals(attributes.getDexterity(), rogueCharacter.baseAttributes.getDexterity());
-    assertEquals(attributes.getIntelligence(), rogueCharacter.baseAttributes.getIntelligence());
+    assertEquals(3, rogueCharacter.totalAttributes.getStrength());
+    assertEquals(10, rogueCharacter.totalAttributes.getDexterity());
+    assertEquals(2, rogueCharacter.totalAttributes.getIntelligence());
   }
+
   @Test
-  void TestLevelUp_Warrior_ShouldIncreaseAttributes() {
+  void TestLevelUp_Warrior_ShouldIncreaseLevelAndAttributes() {
     Warrior warriorCharacter = new Warrior("Aladdin");
     warriorCharacter.levelUp();
-    PrimaryAttribute attributes = new PrimaryAttribute();
-    attributes.addToAttributes(8,4,2);
 
     assertEquals(2, warriorCharacter.getLevel());
-    assertEquals(attributes.getStrength(), warriorCharacter.baseAttributes.getStrength());
-    assertEquals(attributes.getDexterity(), warriorCharacter.baseAttributes.getDexterity());
-    assertEquals(attributes.getIntelligence(), warriorCharacter.baseAttributes.getIntelligence());
+    assertEquals(8, warriorCharacter.totalAttributes.getStrength());
+    assertEquals(4, warriorCharacter.totalAttributes.getDexterity());
+    assertEquals(2, warriorCharacter.totalAttributes.getIntelligence());
   }
 
 }

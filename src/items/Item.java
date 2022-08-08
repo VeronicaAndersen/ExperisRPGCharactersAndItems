@@ -6,7 +6,7 @@ import items.armor.ArmorType;
 import items.weapons.WeaponType;
 
 /*This class include things for both armor and weapons.*/
-public class Item {
+public abstract class Item {
 
   private String name;
   private WeaponType weaponType;
