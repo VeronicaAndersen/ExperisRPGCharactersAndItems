@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4ed172e-bb79-4e06-8f5a-29759275df06" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/characters/Character.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/characters/Character.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/items/weapons/WeaponTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +62,7 @@
       <recent name="characters" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.ArmorTest.TestEquipArmor_OkLevel_ShouldEquip">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="JavaAssignment1" />
@@ -84,6 +85,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ArmorTest.TestEquipArmor_OkLevel_ShouldEquip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JavaAssignment1" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="items.armor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="items.armor" />
+      <option name="MAIN_CLASS_NAME" value="items.armor.ArmorTest" />
+      <option name="METHOD_NAME" value="TestEquipArmor_OkLevel_ShouldEquip" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CharacterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAssignment1" />
       <extension name="coverage">
@@ -99,7 +116,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WeaponTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WeaponTest.TestEquip_RightWeaponType_ShouldEquip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JavaAssignment1" />
       <extension name="coverage">
         <pattern>
@@ -109,22 +126,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="items.weapons" />
       <option name="MAIN_CLASS_NAME" value="items.weapons.WeaponTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WeaponTest.TestEquip_WeaponAndArmorEquip_ShouldReturnDPS" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="JavaAssignment1" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="items.weapons.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="items.weapons" />
-      <option name="MAIN_CLASS_NAME" value="items.weapons.WeaponTest" />
-      <option name="METHOD_NAME" value="TestEquip_WeaponAndArmorEquip_ShouldReturnDPS" />
+      <option name="METHOD_NAME" value="TestEquip_RightWeaponType_ShouldEquip" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -132,11 +134,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ArmorTest.TestEquipArmor_OkLevel_ShouldEquip" />
+        <item itemvalue="JUnit.WeaponTest.TestEquip_RightWeaponType_ShouldEquip" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.ArmorTest" />
         <item itemvalue="JUnit.CharacterTest" />
-        <item itemvalue="JUnit.WeaponTest" />
-        <item itemvalue="JUnit.WeaponTest.TestEquip_WeaponAndArmorEquip_ShouldReturnDPS" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +154,7 @@
       <workItem from="1659440417675" duration="76549000" />
       <workItem from="1659776885942" duration="46000" />
       <workItem from="1659776948025" duration="879000" />
-      <workItem from="1659777839835" duration="52170000" />
+      <workItem from="1659777839835" duration="53786000" />
     </task>
     <servers />
   </component>

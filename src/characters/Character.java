@@ -70,7 +70,7 @@ public abstract class Character {
   HashMap<EquipmentSlots, Item> slots = new HashMap<>();
 
   /*Creates method for hashmap that returns slots.*/
-  HashMap<EquipmentSlots, Item> getSlots() {
+  public HashMap<EquipmentSlots, Item> getSlots() {
     return slots;
   }
 

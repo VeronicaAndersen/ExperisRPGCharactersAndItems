@@ -9,16 +9,19 @@ import items.errors.InvalidLevelException;
 import items.errors.InvalidWeaponException;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class WeaponTest {
   @Test
-  void TestEquipWeapon_TooLowLevel_ShouldThrowException()  {
+  void TestEquipWeapon_TooLowLevel_ShouldThrowException() {
     Warrior warrior = new Warrior("Gizmo");
     Weapon armor = new Weapon("Common Axe", 1, 2, 2, WeaponType.Axes);
 
     assertThrows(InvalidLevelException.class, () -> warrior.checkLevel(armor));
   }
+
   @Test
   void TestEquipWeapon_WrongWeaponType_ShouldThrowException() {
     Warrior warrior = new Warrior("Gizmo");
@@ -31,22 +34,24 @@ class WeaponTest {
   void TestEquip_RightWeaponType_ShouldEquip() throws InvalidLevelException, InvalidWeaponException {
     Warrior warrior = new Warrior("Nemo");
     Weapon weapon = new Weapon("Common Axe", 1, 2, 1, WeaponType.Axes);
-
     warrior.equipWeapon(EquipmentSlots.Weapon, weapon);
+    assertEquals(weapon, warrior.getSlots().get(EquipmentSlots.Weapon));
   }
+
   @Test
   void TestEquip_NoWeaponEquip_ShouldReturnBaseDPS() {
     Warrior warrior = new Warrior("Nemo");
     float expected = warrior.getWeaponDPS();
-    assertEquals( 1*(1 + (5 / 100)),  expected);
+    assertEquals(1 * (1 + (5 / 100)), expected);
   }
+
   @Test
   void TestEquip_WeaponEquip_ShouldReturnDPS() throws InvalidWeaponException, InvalidLevelException {
     Warrior warrior = new Warrior("Nemo");
     Weapon weapon = new Weapon("Common Axe", 7, 1, 1, WeaponType.Axes);
     warrior.equipWeapon(EquipmentSlots.Weapon, weapon);
     float expected = warrior.getCharacterDPS();
-    assertEquals( 7*(1 + (5 / 100f)), expected);
+    assertEquals(7 * (1 + (5 / 100f)), expected);
   }
 
   @Test
@@ -57,6 +62,6 @@ class WeaponTest {
     warrior.equipWeapon(EquipmentSlots.Weapon, weapon);
     warrior.equipArmor(EquipmentSlots.Head, armor);
     float expected = warrior.calculateDPS(warrior.getWeaponDPS());
-    assertEquals(  (7 * 1.1f) * (1 + ((5f+1f) / 100f)), expected);
+    assertEquals((7 * 1.1f) * (1 + ((5f + 1f) / 100f)), expected);
   }
 }

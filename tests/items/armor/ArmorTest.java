@@ -24,6 +24,7 @@ class ArmorTest {
     Armor armor = new Armor("Ballistic Protection", 1, 2, 3, 1, ArmorType.Mail);
 
     warrior.equipArmor(EquipmentSlots.Head, armor);
+    assertEquals(armor, warrior.getSlots().get(EquipmentSlots.Head));
   }
   @Test
   void TestEquipArmor_WrongArmorType_ShouldThrowException() {
