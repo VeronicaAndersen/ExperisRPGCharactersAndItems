@@ -1,5 +1,5 @@
 # Java Assignment 1 - RPG Characters and Items (Armors & Weapons)
-Project that was created for an assigment in Java. This application allows the user to choose a character and then equip some items and level up the character. The stats of the character will be shown in the display(). The repository containes unit testing and test coverage in directory tests. 
+Project is a console application that was created for an assigment in Java. This application allows the user to choose a character and then equip some items and level up the character. The stats of the character will be shown in the display(). The repository containes unit testing and test coverage in directory tests. 
 
 ## Installation 
 
