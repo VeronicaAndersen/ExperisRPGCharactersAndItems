@@ -26,7 +26,7 @@ public class Ranger extends Character {
     return weaponDPS * (1 + ((float) totalAttributes.getDexterity() / 100));
   }
 
-  /*Method that get & sets the list of armorlist.*/
+  /*Method that get & sets the list of armor list.*/
   @Override
   public ArmorType[] getArmorList() {
     return armorList;

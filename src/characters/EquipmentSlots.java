@@ -1,5 +1,5 @@
 package characters;
-/*Creates a enum for the equipmentslots.*/
+/*Creates a enum for the equipments.*/
 public enum EquipmentSlots {
   Head,
   Body,
